@@ -76,7 +76,7 @@ class SearchKeyword extends Component {
         <h2>{book.title}</h2>
         <h3>{book.subtitle}</h3>
         <h3>by: {book.authors[0].name}</h3>
-            <a href={book.url}>
+            <a href={book.url} target="_blank" rel="noopener noreferrer">
             {book.cover ? <img src={book.cover.large} /> : <img src="http://worldartsme.com/images/vertical-of-books-clipart-1.jpg" />}
             </a>
         </div>

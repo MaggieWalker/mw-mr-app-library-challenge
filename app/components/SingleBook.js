@@ -31,7 +31,7 @@ class SingleBook extends Component {
                     <h2>{book.title}</h2>
                     <h3>{book.subtitle}</h3>
                     {/* <h3>by: {book.authors[0].name}</h3> */}
-                    <a href={book.url}>
+                    <a href={book.url} target="_blank" rel="noopener noreferrer">
                       {book.cover ? (
                         <img src={book.cover.large} />
                       ) : (
@@ -56,7 +56,7 @@ class SingleBook extends Component {
             <div className="card">
               <div className="card-body">
                 {book ? <h5>{book.by_statement}</h5> : <div />}
-                {book ? book.description ? <div><h4>{book.description}</h4> <a href={book.url}><h4>Explore more about this book!</h4></a> </div> : <a href={book.url}><h4>Explore more about this book!</h4></a> : <div />}
+                {book ? book.description ? <div><h4>{book.description}</h4> <a href={book.url} target="_blank" rel="noopener noreferrer"><h4>Explore more about this book!</h4></a> </div> : <a href={book.url} target="_blank" rel="noopener noreferrer"><h4>Explore more about this book!</h4></a> : <div />}
               </div>
             </div>
           </div>
