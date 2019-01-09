@@ -1,7 +1,11 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import HomePage from './HomePage';
-import Navbar from './Navbar'
+import SearchNumber from './SearchNumber';
+import SearchKeyword from './SearchKeyword';
+import Navbar from './Navbar';
+import Browse from './Browse';
+import SingleBook from './SingleBook';
 
 const Root = () => {
   return (
@@ -10,7 +14,11 @@ const Root = () => {
       <main>
         <div id="homepageRoutes">
           <Switch>
-            <Route path="/" component={HomePage} />
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/number" component={SearchNumber} />
+            <Route exact path="/keyword" component={SearchKeyword} />
+            <Route exact path="/browse" component={Browse} />
+            <Route exact path="/book/:lccn" component={SingleBook} />
           </Switch>
         </div>
       </main>

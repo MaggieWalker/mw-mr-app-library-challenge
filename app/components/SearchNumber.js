@@ -3,19 +3,12 @@ import { connect } from 'react-redux';
 import { getBooks, getBook } from '../reducers/index';
 import { Link } from 'react-router-dom';
 
-class Homepage extends Component {
+class SearchNumber extends Component {
   constructor() {
     super();
     this.state = {
       searchInput: '',
     };
-    this.textInputISBN = React.createRef();
-    this.textInputOCLC = React.createRef();
-    this.textInputLCCN = React.createRef();
-    this.textInputOLID = React.createRef();
-    this.textInputq = React.createRef();
-    this.textInputtitle = React.createRef();
-    this.textInputauthor = React.createRef();
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -47,10 +40,10 @@ class Homepage extends Component {
   onSubmit(event){
     if (event.target.name === 'ISBN' || event.target.name === 'OCLC' || event.target.name === 'LCCN' || event.target.name === 'OLID') {
         this.props.actions.fetchSingleBook(this.state.searchInput, event.target.name)
-        this[`textInput${event.target.name}`].current.value = '' // Clears the input field after submission
+        this.setState({searchInput: ''})
     } else {
-        this.props.actions.fetchAllBooks(this.state.searchInput, event.target.name);
-        this[`textInput${event.target.name}`].current.value = '' // Clears the input field after submission
+        this.props.actions.fetchAllBooks(this.state.searchInput, event.target.name)
+        this.setState({searchInput: ''})
     }
   }
 
@@ -65,40 +58,28 @@ class Homepage extends Component {
         <br />
        
           <div>
-              Search by ISBN: <input type="text" className="form-control" name="ISBN" ref={this.textInputISBN} onChange ={this.handleChange} />
+            
+              Search by ISBN: <input type="text" className="form-control" name="ISBN" onChange ={this.handleChange} />
               <input type="image" name="ISBN" onClick={this.onSubmit} src="//ux-static.nypl.org/images/magnifier.encore.v2.svg" id="searchISBN" tabIndex="0" alt="Search" width="34" height="34" />
+           
           </div>
           <div>
-              Search by OCLC: <input type="text" className="form-control" name="OCLC" ref={this.textInputOCLC} onChange ={this.handleChange} />
+         
+              Search by OCLC: <input type="text" className="form-control" name="OCLC" onChange ={this.handleChange} />
               <input type="image" name="OCLC" onClick={this.onSubmit} src="//ux-static.nypl.org/images/magnifier.encore.v2.svg" id="searchOCLC" tabIndex="0" alt="Search" width="34" height="34" />
+    
           </div>
           <div>
-              Search by LCCN: <input type="text" className="form-control" name="LCCN" ref={this.textInputLCCN} onChange ={this.handleChange} />
+              Search by LCCN: <input type="text" className="form-control" name="LCCN" onChange ={this.handleChange} />
               <input type="image" name="LCCN" onClick={this.onSubmit} src="//ux-static.nypl.org/images/magnifier.encore.v2.svg" id="searchLCCN" tabIndex="0" alt="Search" width="34" height="34" />
           </div>
           <div>
-              Search by OLID: <input type="text" className="form-control" name="OLID" ref={this.textInputOLID} onChange ={this.handleChange} />
+              Search by OLID: <input type="text" className="form-control" name="OLID" onChange ={this.handleChange} />
               <input type="image" name="OLID" onClick={this.onSubmit} src="//ux-static.nypl.org/images/magnifier.encore.v2.svg" id="searchOLID" tabIndex="0" alt="Search" width="34" height="34" />  
           </div>
       
         </div>
-
-        <div className="container">
-        <h1>General Search:</h1>
-          <div>
-              Search by Keyword: <input type="text" className="form-control" name="all" ref={this.textInputq} onChange ={this.handleChange} />
-              <input type="submit" className="btn btn-primary" name = "q" value="Search" onClick={this.onSubmit} />
-          </div>
-          <div>
-              Search By Title: <input type="text" className="form-control" name="title" ref={this.textInputtitle} onChange ={this.handleChange} />
-              <input type="submit" className="btn btn-primary" name = "title" value="Search" onClick={this.onSubmit} />
-          </div>
-          <div>
-              Search By Author: <input type="text" className="form-control" name="author" ref={this.textInputauthor} onChange ={this.handleChange} />
-              <input type="submit" className="btn btn-primary" name = "author" value="Search" onClick={this.onSubmit} />
-          </div>
-        </div>
-
+        
         <div>
         {book ?
         <div id="singleBook">
@@ -107,35 +88,10 @@ class Homepage extends Component {
         <h3>{book.subtitle}</h3>
         <h3>by: {book.authors[0].name}</h3>
             <a href={book.url}>
-            {book.cover ? <img src={book.cover.large} /> : <img src="http://worldartsme.com/images/vertical-of-books-clipart-1.jpg" height="200" />}
+            {book.cover ? <img src={book.cover.large} /> : <img src="http://worldartsme.com/images/vertical-of-books-clipart-1.jpg" />}
             </a>
         </div>
     : <div />}
-        </div>
-
-
-        <div id="book-list" className="album py-5 bg-light">
-          <div className="container">
-            <div className="row">
-          {books ? books.docs.map(book => (
-              <div key={book.isbn} className="col-md-4">
-                <div className="card mb-4 shadow-sm">
-                {/* <img src="http://worldartsme.com/images/vertical-of-books-clipart-1.jpg" class="card-img-top" alt="..."></img> */}
-                <svg className="bd-placeholder-img card-img-top" width="100%">
-                  <rect fill="#55595c" width="100%" height="100%" />
-                </svg>
-                  <div className="card-body">
-                  <Link to={`/book/${book.lccn ? book.lccn[0] : 0}`}><h5 className="card-title">{book.title}</h5> </Link>
-                  <p className="card-text">
-                    by {book.author_name}
-                  </p>
-                  </div>
-                </div>
-              </div>
-          )) : <div />
-          } 
-            </div>
-          </div>
         </div>
       </div>
     );
@@ -160,4 +116,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Homepage);
+)(SearchNumber);
