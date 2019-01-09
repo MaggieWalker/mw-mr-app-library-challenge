@@ -8,23 +8,34 @@ class BookResults extends Component {
     this.state = {
       filterAuthor: false,
       filterTitle: false,
+      unsortedBooks: [],
       sortedBooks: null,
     };
     this.handleSelect = this.handleSelect.bind(this);
     this.bookSort = this.bookSort.bind(this);
   }
 
-  async componentDidMount() {}
+  componentDidMount() {
+      this.setState({
+          unsortedBooks: [...this.props.books.books.docs]
+      })
+  }
 
   bookSort(category) {
-    const books = this.props.books.books.docs;
-    console.log('category in bookSort', category);
-    console.log('books', books);
-    if (category === 'All') return books;
-    // if (category === 'SortByAuthor') return books;
+    const books = this.state.unsortedBooks;
+    console.log('books in BookSort', books);
+    if (category === 'AllBooks') return this.props.books.books.docs;
+    if (category === 'SortByAuthor') return books.sort(this.compareAuthor);
+    if (category === 'SortByTitle') return this.props.books.books.docs;
   }
-  compareItems(a, b) {
-    return a - b;
+  compareAuthor(a, b) {
+      let nameA = a.author_name || 'a';
+      let nameB = b.author_name || 'b';
+      let wordA = nameA[0].toUpperCase();
+      let wordB = nameB[0].toUpperCase();
+      if (wordA < wordB) return -1;
+      if (wordA > wordB) return 1;
+      return 0
   }
 
   handleSelect(event) {
@@ -37,7 +48,10 @@ class BookResults extends Component {
   }
 
   render() {
-    const books = this.state.sortedBooks || this.props.books.books;
+    const books = this.state.sortedBooks || this.props.books.books.docs;
+    console.log('this.props in render', this.props)
+    console.log('books', books)
+    console.log('state sortedBooks', this.state.sortedBooks)
     // const filterAuthor = this.props.books.books.sort(this.compareItems)
     // const filterTitle = this.props.books.books.sort(this.compareItems)
     return (
@@ -61,7 +75,8 @@ class BookResults extends Component {
         <div id="book-list" className="album py-5 bg-light">
           <div className="container">
             <div className="row">
-              {books.docs.map(book => (
+              {
+                  books.map(book => (
                 <div key={book.isbn} className="col-md-4">
                   <div className="card mb-4 shadow-sm">
                     <svg
@@ -78,10 +93,12 @@ class BookResults extends Component {
                     </div>
                   </div>
                 </div>
-              ))}
+              ))
+              }
             </div>
           </div>
-        </div>
+        </div> 
+        <div />
       </div>
     );
   }

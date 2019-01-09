@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getBooks, getBook } from '../reducers/index';
 import { Link } from 'react-router-dom';
-import BookResults from './BookResults'
+import BookResults from './BookResults';
 
 class Homepage extends Component {
   constructor() {
@@ -71,100 +71,73 @@ class Homepage extends Component {
   }
 
   render() {
-    const books = this.props.books.books; 
+    const books = this.props.books.books;
     const book = this.props.books.book;
     console.log('book', book);
     return (
       <div>
-<div className="container">
-<h1>Search For A Book!</h1>
-        <div className="card">
-        <div className="card-body">
-          <div>
-            Search by Keyword:{' '}
-            <input
-              type="text"
-              className="form-control"
-              name="all"
-              ref={this.textInputq}
-              onChange={this.handleChange}
-            />
-            <input
-              type="submit"
-              className="btn btn-primary"
-              name="q"
-              value="Search"
-              onClick={this.onSubmit}
-            />
-          </div>
-          <div>
-            Search By Title:{' '}
-            <input
-              type="text"
-              className="form-control"
-              name="title"
-              ref={this.textInputtitle}
-              onChange={this.handleChange}
-            />
-            <input
-              type="submit"
-              className="btn btn-primary"
-              name="title"
-              value="Search"
-              onClick={this.onSubmit}
-            />
-          </div>
-          <div>
-            Search By Author:{' '}
-            <input
-              type="text"
-              className="form-control"
-              name="author"
-              ref={this.textInputauthor}
-              onChange={this.handleChange}
-            />
-            <input
-              type="submit"
-              className="btn btn-primary"
-              name="author"
-              value="Search"
-              onClick={this.onSubmit}
-            />
+        <div className="container">
+          <h1>Search For A Book!</h1>
+          <div className="card">
+            <div className="card-body">
+              <div>
+                Search by Keyword:{' '}
+                <input
+                  type="text"
+                  className="form-control"
+                  name="all"
+                  ref={this.textInputq}
+                  onChange={this.handleChange}
+                />
+                <input
+                  type="submit"
+                  className="btn btn-primary"
+                  name="q"
+                  value="Search"
+                  onClick={this.onSubmit}
+                />
+              </div>
+              <div>
+                Search By Title:{' '}
+                <input
+                  type="text"
+                  className="form-control"
+                  name="title"
+                  ref={this.textInputtitle}
+                  onChange={this.handleChange}
+                />
+                <input
+                  type="submit"
+                  className="btn btn-primary"
+                  name="title"
+                  value="Search"
+                  onClick={this.onSubmit}
+                />
+              </div>
+              <div>
+                Search By Author:{' '}
+                <input
+                  type="text"
+                  className="form-control"
+                  name="author"
+                  ref={this.textInputauthor}
+                  onChange={this.handleChange}
+                />
+                <input
+                  type="submit"
+                  className="btn btn-primary"
+                  name="author"
+                  value="Search"
+                  onClick={this.onSubmit}
+                />
+              </div>
+            </div>
           </div>
         </div>
-</div>
-</div>
 
         <div id="book-list" className="album py-5 bg-light">
           <div className="container">
-            <div className="row">
-              {books ? 
-
-//Filter search bar
-      <BookResults />
-
-                // books.docs.map(book => (
-                //   <div key={book.isbn} className="col-md-4">
-                //     <div className="card mb-4 shadow-sm">
-                //       <svg
-                //         className="bd-placeholder-img card-img-top"
-                //         width="100%"
-                //       >
-                //         <rect fill="#55595c" width="100%" height="100%" />
-                //       </svg>
-                //       <div className="card-body">
-                //         <Link to={`/book/${book.lccn ? book.lccn[0] : 0}`}>
-                //           <h5 className="card-title">{book.title}</h5>{' '}
-                //         </Link>
-                //         <p className="card-text">by {book.author_name}</p>
-                //       </div>
-                //     </div>
-                //   </div>
-                // ))
-               :
-                <div />
-              }
-            </div>
+            <div className="row">{books ? <BookResults /> : <div />}</div>
           </div>
         </div>
       </div>
