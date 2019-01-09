@@ -14,11 +14,13 @@ class Browse extends Component {
       <div>
         <div className="container">
           <div className="media">
+          <a href="https://www.nytimes.com/interactive/2018/11/19/books/review/100-notable-books.html" target="_blank" rel="noopener noreferrer">
             <img
               src="https://static01.nyt.com/newsgraphics/2018/10/08/books/90772dc443fbd7be4398963d5d50a09c86d7f1d3/illo.gif"
               className="ml-3"
               alt="..."
             />
+          </a>
           </div>
         </div>
 

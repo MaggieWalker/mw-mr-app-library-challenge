@@ -62,7 +62,7 @@ const Navbar = () => (
 
       <ul className="navbar-nav flex-row ml-md-auto d-none d-md-flex">
         <li className="nav-item active">
-          <a className="nav-link" href="https://github.com/MaggieWalker">
+          <a className="nav-link" href="https://github.com/MaggieWalker" target="_blank" rel="noopener noreferrer">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
               height="30"
@@ -73,7 +73,7 @@ const Navbar = () => (
         </li>
 
         <li className="nav-item active">
-          <a className="nav-link" href="https://www.linkedin.com/in/magggiewalker/">
+          <a className="nav-link" href="https://www.linkedin.com/in/magggiewalker/" target="_blank" rel="noopener noreferrer">
             <img
               src="https://www.freeiconspng.com/uploads/linkedin-logo-3.png"
               height="30"
