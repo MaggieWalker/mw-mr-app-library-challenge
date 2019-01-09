@@ -18,7 +18,7 @@ const Root = () => {
             <Route exact path="/number" component={SearchNumber} />
             <Route exact path="/keyword" component={SearchKeyword} />
             <Route exact path="/browse" component={Browse} />
-            <Route exact path="/book/:lccn" component={SingleBook} />
+            <Route exact path="/book/:isbn" component={SingleBook} />
           </Switch>
         </div>
       </main>

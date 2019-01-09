@@ -6,8 +6,6 @@ class BookResults extends Component {
   constructor() {
     super();
     this.state = {
-      filterAuthor: false,
-      filterTitle: false,
       unsortedBooks: [],
       sortedBooks: null,
     };
@@ -52,8 +50,6 @@ class BookResults extends Component {
     console.log('this.props in render', this.props)
     console.log('books', books)
     console.log('state sortedBooks', this.state.sortedBooks)
-    // const filterAuthor = this.props.books.books.sort(this.compareItems)
-    // const filterTitle = this.props.books.books.sort(this.compareItems)
     return (
       <div>
         <div class="form-group">
@@ -86,7 +82,7 @@ class BookResults extends Component {
                       <rect fill="#55595c" width="100%" height="100%" />
                     </svg>
                     <div className="card-body">
-                      <Link to={`/book/${book.lccn ? book.lccn[0] : 0}`}>
+                      <Link to={`/book/${book.isbn ? book.isbn[0] : 0}`}>
                         <h5 className="card-title">{book.title}</h5>{' '}
                       </Link>
                       <p className="card-text">by {book.author_name}</p>

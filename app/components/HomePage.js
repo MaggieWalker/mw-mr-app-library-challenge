@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getBooks, getBook } from '../reducers/index';
-import { Link } from 'react-router-dom';
 import BookResults from './BookResults';
 
 class Homepage extends Component {

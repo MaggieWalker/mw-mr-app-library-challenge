@@ -7,15 +7,17 @@ class SingleBook extends Component {
   constructor() {
     super();
     this.state = {
-      bookLCCN: '',
+      bookISBN: null,
       book: {},
     };
   }
 
   async componentDidMount() {
-    const bookLCCN = this.props.match.params.lccn;
-    this.setState({ bookLCCN: bookLCCN });
-    await this.props.actions.fetchSingleBook(bookLCCN, 'LCCN');
+    const bookISBN = this.props.match.params.isbn;
+    if (bookISBN !== 0) {
+      this.setState({ bookISBN: bookISBN });
+      await this.props.actions.fetchSingleBook(bookISBN, 'ISBN');
+    }
   }
 
   render() {

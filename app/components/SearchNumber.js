@@ -9,6 +9,11 @@ class SearchNumber extends Component {
     this.state = {
       searchInput: '',
     };
+    this.textInputISBN = React.createRef();
+    this.textInputOCLC = React.createRef();
+    this.textInputLCCN = React.createRef();
+    this.textInputOLID = React.createRef();
+    this.textInputq = React.createRef();
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -52,13 +57,13 @@ class SearchNumber extends Component {
         this.state.searchInput,
         event.target.name
       );
-      this.setState({ searchInput: '' });
+      this[`textInput${event.target.name}`].current.value = ''; // Clears the input field after submission
     } else {
       this.props.actions.fetchAllBooks(
         this.state.searchInput,
         event.target.name
       );
-      this.setState({ searchInput: '' });
+      this[`textInput${event.target.name}`].current.value = ''; // Clears the input field after submission
     }
   }
 
@@ -77,6 +82,7 @@ class SearchNumber extends Component {
               type="text"
               className="form-control"
               name="ISBN"
+              ref={this.textInputISBN}
               onChange={this.handleChange}
             />
             <input
@@ -97,6 +103,7 @@ class SearchNumber extends Component {
               type="text"
               className="form-control"
               name="OCLC"
+              ref={this.textInputOCLC}
               onChange={this.handleChange}
             />
             <input
@@ -117,6 +124,7 @@ class SearchNumber extends Component {
               type="text"
               className="form-control"
               name="LCCN"
+              ref={this.textInputLCCN}
               onChange={this.handleChange}
             />
             <input
@@ -137,6 +145,7 @@ class SearchNumber extends Component {
               type="text"
               className="form-control"
               name="OLID"
+              ref={this.textInputOLID}
               onChange={this.handleChange}
             />
             <input
@@ -156,9 +165,13 @@ class SearchNumber extends Component {
         <div>
           {book ?
             <div id="singleBook">
-              <hr />
+              <div className="container">
+              <div className="card">
+              <div className="card-body">
+            <Link to={`/book/${book.identifiers.isbn_10 ? book.identifiers.isbn_10[0] : 0}`}>
               <h2>{book.title}</h2>
               <h3>{book.subtitle}</h3>
+            </Link>
               <h3>by: {book.authors[0].name}</h3>
               <a href={book.url} target="_blank" rel="noopener noreferrer">
                 {book.cover ? (
@@ -167,6 +180,9 @@ class SearchNumber extends Component {
                   <img src="http://worldartsme.com/images/vertical-of-books-clipart-1.jpg" />
                 )}
               </a>
+              </div>
+              </div>
+              </div>
             </div>
            :
             <div />
