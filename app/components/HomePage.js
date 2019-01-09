@@ -70,11 +70,67 @@ class Homepage extends Component {
   }
 
   render() {
-    const books = this.props.books.books;
+    const books = this.props.books.books; 
     const book = this.props.books.book;
     console.log('book', book);
     return (
       <div>
+
+        <div className="container">
+          <h1>General Search:</h1>
+          <div>
+            Search by Keyword:{' '}
+            <input
+              type="text"
+              className="form-control"
+              name="all"
+              ref={this.textInputq}
+              onChange={this.handleChange}
+            />
+            <input
+              type="submit"
+              className="btn btn-primary"
+              name="q"
+              value="Search"
+              onClick={this.onSubmit}
+            />
+          </div>
+          <div>
+            Search By Title:{' '}
+            <input
+              type="text"
+              className="form-control"
+              name="title"
+              ref={this.textInputtitle}
+              onChange={this.handleChange}
+            />
+            <input
+              type="submit"
+              className="btn btn-primary"
+              name="title"
+              value="Search"
+              onClick={this.onSubmit}
+            />
+          </div>
+          <div>
+            Search By Author:{' '}
+            <input
+              type="text"
+              className="form-control"
+              name="author"
+              ref={this.textInputauthor}
+              onChange={this.handleChange}
+            />
+            <input
+              type="submit"
+              className="btn btn-primary"
+              name="author"
+              value="Search"
+              onClick={this.onSubmit}
+            />
+          </div>
+        </div>
+
         <div className="container">
           <h1>Search for a specific book:</h1>
           <br />
@@ -165,94 +221,40 @@ class Homepage extends Component {
           </div>
         </div>
 
-        <div className="container">
-          <h1>General Search:</h1>
-          <div>
-            Search by Keyword:{' '}
-            <input
-              type="text"
-              className="form-control"
-              name="all"
-              ref={this.textInputq}
-              onChange={this.handleChange}
-            />
-            <input
-              type="submit"
-              className="btn btn-primary"
-              name="q"
-              value="Search"
-              onClick={this.onSubmit}
-            />
-          </div>
-          <div>
-            Search By Title:{' '}
-            <input
-              type="text"
-              className="form-control"
-              name="title"
-              ref={this.textInputtitle}
-              onChange={this.handleChange}
-            />
-            <input
-              type="submit"
-              className="btn btn-primary"
-              name="title"
-              value="Search"
-              onClick={this.onSubmit}
-            />
-          </div>
-          <div>
-            Search By Author:{' '}
-            <input
-              type="text"
-              className="form-control"
-              name="author"
-              ref={this.textInputauthor}
-              onChange={this.handleChange}
-            />
-            <input
-              type="submit"
-              className="btn btn-primary"
-              name="author"
-              value="Search"
-              onClick={this.onSubmit}
-            />
-          </div>
-        </div>
-
         <div>
-
-                {book ?
-                <div>
-          <hr />
-          <div className="col-sm-6">
-            <div className="card">
-              <div className="card-body">
-                  <div id="singleBook">
-                    <h2>{book.title}</h2>
-                    <h3>{book.subtitle}</h3>
-                    <h3>by: {book.authors[0].name}</h3>
-                    <a href={book.url} target="_blank" rel="noopener noreferrer">
-                      {book.cover ?
-                        <img src={book.cover.large} />
-                       :
-                        <img
-                          src="http://worldartsme.com/images/vertical-of-books-clipart-1.jpg"
-                          height="200"
-                        />
-                      }
-                    </a>
+          {book ? (
+            <div>
+              <hr />
+              <div className="col-sm-6">
+                <div className="card">
+                  <div className="card-body">
+                    <div id="singleBook">
+                      <h2>{book.title}</h2>
+                      <h3>{book.subtitle}</h3>
+                      <h3>by: {book.authors[0].name}</h3>
+                      <a
+                        href={book.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {book.cover ? (
+                          <img src={book.cover.large} />
+                        ) : (
+                          <img
+                            src="http://worldartsme.com/images/vertical-of-books-clipart-1.jpg"
+                            height="200"
+                          />
+                        )}
+                      </a>
+                    </div>
                   </div>
+                </div>
               </div>
             </div>
-          </div>
-          </div>
-            :
-          <div />
-          }
-
+          ) : (
+            <div />
+          )}
         </div>
-        
 
         <div id="book-list" className="album py-5 bg-light">
           <div className="container">
@@ -261,7 +263,6 @@ class Homepage extends Component {
                 books.docs.map(book => (
                   <div key={book.isbn} className="col-md-4">
                     <div className="card mb-4 shadow-sm">
-                      {/* <img src="http://worldartsme.com/images/vertical-of-books-clipart-1.jpg" class="card-img-top" alt="..."></img> */}
                       <svg
                         className="bd-placeholder-img card-img-top"
                         width="100%"

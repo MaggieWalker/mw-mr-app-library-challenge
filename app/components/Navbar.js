@@ -61,6 +61,16 @@ const Navbar = () => (
       </ul>
 
       <ul className="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+      <li className="nav-item active">
+          <a className="nav-link" href="https://openlibrary.org/" target="_blank" rel="noopener noreferrer">
+            <img
+              src="https://openlibrary.org/static/images/openlibrary-logo-tighter.svg"
+              height="30"
+              width="100"
+            />
+            <span className="sr-only">(current)</span>
+          </a>
+        </li>
         <li className="nav-item active">
           <a className="nav-link" href="https://github.com/MaggieWalker" target="_blank" rel="noopener noreferrer">
             <img
