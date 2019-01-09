@@ -75,9 +75,10 @@ class Homepage extends Component {
     console.log('book', book);
     return (
       <div>
-
-        <div className="container">
-          <h1>General Search:</h1>
+<div className="container">
+<h1>Search For A Book!</h1>
+        <div className="card">
+        <div class="card-body">
           <div>
             Search by Keyword:{' '}
             <input
@@ -130,96 +131,9 @@ class Homepage extends Component {
             />
           </div>
         </div>
+</div>
+</div>
 
-        <div className="container">
-          <h1>Search for a specific book:</h1>
-          <br />
-
-          <div>
-            Search by ISBN:{' '}
-            <input
-              type="text"
-              className="form-control"
-              name="ISBN"
-              ref={this.textInputISBN}
-              onChange={this.handleChange}
-            />
-            <input
-              type="image"
-              name="ISBN"
-              onClick={this.onSubmit}
-              src="//ux-static.nypl.org/images/magnifier.encore.v2.svg"
-              id="searchISBN"
-              tabIndex="0"
-              alt="Search"
-              width="34"
-              height="34"
-            />
-          </div>
-          <div>
-            Search by OCLC:{' '}
-            <input
-              type="text"
-              className="form-control"
-              name="OCLC"
-              ref={this.textInputOCLC}
-              onChange={this.handleChange}
-            />
-            <input
-              type="image"
-              name="OCLC"
-              onClick={this.onSubmit}
-              src="//ux-static.nypl.org/images/magnifier.encore.v2.svg"
-              id="searchOCLC"
-              tabIndex="0"
-              alt="Search"
-              width="34"
-              height="34"
-            />
-          </div>
-          <div>
-            Search by LCCN:{' '}
-            <input
-              type="text"
-              className="form-control"
-              name="LCCN"
-              ref={this.textInputLCCN}
-              onChange={this.handleChange}
-            />
-            <input
-              type="image"
-              name="LCCN"
-              onClick={this.onSubmit}
-              src="//ux-static.nypl.org/images/magnifier.encore.v2.svg"
-              id="searchLCCN"
-              tabIndex="0"
-              alt="Search"
-              width="34"
-              height="34"
-            />
-          </div>
-          <div>
-            Search by OLID:{' '}
-            <input
-              type="text"
-              className="form-control"
-              name="OLID"
-              ref={this.textInputOLID}
-              onChange={this.handleChange}
-            />
-            <input
-              type="image"
-              name="OLID"
-              onClick={this.onSubmit}
-              src="//ux-static.nypl.org/images/magnifier.encore.v2.svg"
-              id="searchOLID"
-              tabIndex="0"
-              alt="Search"
-              width="34"
-              height="34"
-            />
-          </div>
-        </div>
 
         <div>
           {book ? (
@@ -259,7 +173,10 @@ class Homepage extends Component {
         <div id="book-list" className="album py-5 bg-light">
           <div className="container">
             <div className="row">
-              {books ? (
+              {books ? 
+
+//Filter search bar
+
                 books.docs.map(book => (
                   <div key={book.isbn} className="col-md-4">
                     <div className="card mb-4 shadow-sm">
@@ -278,9 +195,9 @@ class Homepage extends Component {
                     </div>
                   </div>
                 ))
-              ) : (
+               : 
                 <div />
-              )}
+              }
             </div>
           </div>
         </div>
