@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getBooks, getBook } from '../reducers/index';
 import { Link } from 'react-router-dom';
+import BookResults from './BookResults'
 
 class Homepage extends Component {
   constructor() {
@@ -78,7 +79,7 @@ class Homepage extends Component {
 <div className="container">
 <h1>Search For A Book!</h1>
         <div className="card">
-        <div class="card-body">
+        <div className="card-body">
           <div>
             Search by Keyword:{' '}
             <input
@@ -134,68 +135,33 @@ class Homepage extends Component {
 </div>
 </div>
 
-
-        <div>
-          {book ? (
-            <div>
-              <hr />
-              <div className="col-sm-6">
-                <div className="card">
-                  <div className="card-body">
-                    <div id="singleBook">
-                      <h2>{book.title}</h2>
-                      <h3>{book.subtitle}</h3>
-                      <h3>by: {book.authors[0].name}</h3>
-                      <a
-                        href={book.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {book.cover ? (
-                          <img src={book.cover.large} />
-                        ) : (
-                          <img
-                            src="http://worldartsme.com/images/vertical-of-books-clipart-1.jpg"
-                            height="200"
-                          />
-                        )}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div />
-          )}
-        </div>
-
         <div id="book-list" className="album py-5 bg-light">
           <div className="container">
             <div className="row">
               {books ? 
 
 //Filter search bar
+      <BookResults />
 
-                books.docs.map(book => (
-                  <div key={book.isbn} className="col-md-4">
-                    <div className="card mb-4 shadow-sm">
-                      <svg
-                        className="bd-placeholder-img card-img-top"
-                        width="100%"
-                      >
-                        <rect fill="#55595c" width="100%" height="100%" />
-                      </svg>
-                      <div className="card-body">
-                        <Link to={`/book/${book.lccn ? book.lccn[0] : 0}`}>
-                          <h5 className="card-title">{book.title}</h5>{' '}
-                        </Link>
-                        <p className="card-text">by {book.author_name}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))
-               : 
+                // books.docs.map(book => (
+                //   <div key={book.isbn} className="col-md-4">
+                //     <div className="card mb-4 shadow-sm">
+                //       <svg
+                //         className="bd-placeholder-img card-img-top"
+                //         width="100%"
+                //       >
+                //         <rect fill="#55595c" width="100%" height="100%" />
+                //       </svg>
+                //       <div className="card-body">
+                //         <Link to={`/book/${book.lccn ? book.lccn[0] : 0}`}>
+                //           <h5 className="card-title">{book.title}</h5>{' '}
+                //         </Link>
+                //         <p className="card-text">by {book.author_name}</p>
+                //       </div>
+                //     </div>
+                //   </div>
+                // ))
+               :
                 <div />
               }
             </div>

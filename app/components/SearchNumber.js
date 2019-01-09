@@ -154,7 +154,7 @@ class SearchNumber extends Component {
         </div>
 
         <div>
-          {book ? (
+          {book ?
             <div id="singleBook">
               <hr />
               <h2>{book.title}</h2>
@@ -168,9 +168,9 @@ class SearchNumber extends Component {
                 )}
               </a>
             </div>
-          ) : (
+           :
             <div />
-          )}
+          }
         </div>
       </div>
     );
