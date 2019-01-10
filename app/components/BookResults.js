@@ -9,9 +9,12 @@ class BookResults extends Component {
     this.state = {
       unsortedBooks: [],
       sortedBooks: null,
+      language: ''
     };
     this.handleSelect = this.handleSelect.bind(this);
+    this.handleOnClick = this.handleOnClick.bind(this);
     this.bookSort = this.bookSort.bind(this);
+    this.filterLang = this.filterLang.bind(this);
   }
 
   componentDidMount() {
@@ -61,6 +64,28 @@ class BookResults extends Component {
     });
   }
 
+  handleOnClick(event){
+    event.persist();
+    const language = event.nativeEvent.target.value;
+    console.log('language', language)
+    this.setState({
+        language: language
+    })
+
+    // let sortedBooks;
+    // this.state.sortedBooks ? sortedBooks = [...this.state.sortedBooks] : sortedBooks = [];
+    // let filteredBooks = sortedBooks.filter(book => book.language[0] === language)
+    // this.setState({
+    //     sortedBooks: filteredBooks
+    // })
+  }
+
+  filterLang(book){
+        if (book.language && (this.state.language === '' || this.state.lanugage === book.language[0])){
+            return true
+        }
+  }
+
 
   render() {
     let books = this.state.sortedBooks || this.props.books.books.docs;
@@ -89,16 +114,18 @@ class BookResults extends Component {
                 </div>
             </div>
             <div id="langButtons">
-                <button type="submit" className="btn btn-primary">English</button>
-                <button type="submit" className="btn btn-primary">French</button>
-                <button type="submit" className="btn btn-primary">Spanish</button>
+                <button type="button" className="btn btn-primary" value="eng" onClick={this.handleOnClick}>English</button>
+                <button type="button" className="btn btn-primary" value="fre" onClick={this.handleOnClick}>French</button>
+                <button type="button" className="btn btn-primary" value="spa" onClick={this.handleOnClick}>Spanish</button>
             </div>
         </form>
 
         <div id="book-list" className="album py-5 bg-light">
           <div className="container">
             <div className="row">
-              {books.map(book => (
+              {books.filter(
+                  (book) => (book.language ? book.language[0] === this.state.language : book)
+                  ).map(book => (
                 <div key={uuidv1()} className="col-md-4">
                   <div className="card mb-4 shadow-sm">
 
@@ -115,11 +142,10 @@ class BookResults extends Component {
                       </Link>
                       <p className="card-text">by {book.author_name}</p>
                     </div>
-
-
                   </div>
                 </div>
-              ))}
+              ))
+              }
             </div>
           </div>
         </div>

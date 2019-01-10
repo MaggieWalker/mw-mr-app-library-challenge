@@ -56,7 +56,7 @@ class SingleBook extends Component {
             <div className="card">
               <div className="card-body">
                 <h3>Description:</h3>
-                {book ? book.details.description ? <div><h4>{book.details.description}</h4> <a href={book.url} target="_blank" rel="noopener noreferrer"><h4>Explore more about this book!</h4></a> </div> : <a href={book.url} target="_blank" rel="noopener noreferrer"><h4>Explore more about this book!</h4></a> : <div />}
+                {book ? book.details.description ? <div><h4>{book.details.description}</h4> <a href={book.url} target="_blank" rel="noopener noreferrer"><h4>Explore more about this book here!</h4></a> </div> : <div><h4>There is no listed description for this book, but you can...</h4><a href={book.url} target="_blank" rel="noopener noreferrer"><h4>Explore more about this book here!</h4></a> </div> : <div />}
               </div>
             </div>
           </div>
