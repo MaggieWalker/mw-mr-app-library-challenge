@@ -2,5 +2,5 @@
 const app = require('./server');
 const PORT = 1337;
 
-    app.listen(PORT, () =>
+    app.listen(process.env.PORT || PORT, () =>
       console.log(`studiously serving silly sounds on port ${PORT}`));
