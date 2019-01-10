@@ -82,6 +82,19 @@ class BookResults extends Component {
           </select>
         </div>
 
+        <form className="form-inline">
+            <div className="form-group row">
+                <div className="container">
+                    <h4>Filter by:</h4>
+                </div>
+            </div>
+            <div id="langButtons">
+                <button type="submit" className="btn btn-primary">English</button>
+                <button type="submit" className="btn btn-primary">French</button>
+                <button type="submit" className="btn btn-primary">Spanish</button>
+            </div>
+        </form>
+
         <div id="book-list" className="album py-5 bg-light">
           <div className="container">
             <div className="row">

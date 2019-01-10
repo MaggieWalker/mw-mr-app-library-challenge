@@ -17,7 +17,7 @@ export const gotBook = book => ({
   book
 })
 
-//Campus thunk creator/action creator. Creating my thunk function
+//Thunk creator
 export const getBooks = (searchInput, parameter) => {
   return async dispatch => {
       const res = await axios.get(`http://openlibrary.org/search.json?${parameter}=${searchInput}`);

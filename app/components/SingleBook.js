@@ -7,7 +7,6 @@ class SingleBook extends Component {
   constructor() {
     super();
     this.state = {
-      bookISBN: null,
       book: {},
     };
   }
@@ -15,7 +14,6 @@ class SingleBook extends Component {
   async componentDidMount() {
     const bookISBN = this.props.match.params.isbn;
     if (bookISBN !== 0) {
-      this.setState({ bookISBN: bookISBN });
       await this.props.actions.fetchSingleBook(bookISBN, 'ISBN');
     }
   }

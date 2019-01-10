@@ -3,15 +3,15 @@ body {
     font-size: 12px;
     height: 100%; }
   
-  form, input, select, button, textarea {
+form, input, select, button, textarea {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px; }
   
-  input[type="text"], select, textarea {
+input[type="text"], select, textarea {
     padding: 6px;
     border: 2px solid #b2b2b2; }
   
-  a {
+a {
     text-decoration: none; }
 
 input[type=text] {
@@ -56,4 +56,8 @@ input[type=text] {
 
 .button__text_weight-normal {
     font-weight: normal;
+}
+
+#langButtons > button {
+    margin: 5px;
 }
