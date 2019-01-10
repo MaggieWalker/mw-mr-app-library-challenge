@@ -31,6 +31,7 @@ export const getBooks = (searchInput, parameter) => {
 export const getBook = (searchInput, queryType) => {
   return async dispatch => {
     const res = await axios.get(`https://openlibrary.org/api/books?bibkeys=${queryType}:${searchInput}&jscmd=data&format=json`);
+    console.log('res', res)
     const resDetails = await axios.get(`https://openlibrary.org/api/books?bibkeys=${queryType}:${searchInput}&jscmd=details&format=json`)
     const bookData = res.data[`${queryType}:${searchInput}`];
     const bookDetails = resDetails.data[`${queryType}:${searchInput}`]

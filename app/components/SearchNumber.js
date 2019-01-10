@@ -51,6 +51,7 @@ class SearchNumber extends Component {
         this.state.searchInput,
         event.target.name
       );
+      console.log('search input', this.state.searchInput)
       this[`textInput${event.target.name}`].current.value = ''; // Clears the input field after submission
     } else {
       this.props.actions.fetchAllBooks(
