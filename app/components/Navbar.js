@@ -11,7 +11,6 @@ const Navbar = () => (
       />
     </a>
 
-    {/* <a className="navbar-brand" href="/">Browse</a> */}
     <button
       className="navbar-toggler"
       type="button"
@@ -52,17 +51,18 @@ const Navbar = () => (
             <a className="dropdown-item" href="/number">
               Search By Number
             </a>
-            <div className="dropdown-divider" />
-            <a className="dropdown-item" href="/keyword">
-              Search By Keyword
-            </a>
           </div>
         </li>
       </ul>
 
       <ul className="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-      <li className="nav-item active">
-          <a className="nav-link" href="https://openlibrary.org/" target="_blank" rel="noopener noreferrer">
+        <li className="nav-item active">
+          <a
+            className="nav-link"
+            href="https://openlibrary.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src="https://openlibrary.org/static/images/openlibrary-logo-tighter.svg"
               height="30"
@@ -72,7 +72,12 @@ const Navbar = () => (
           </a>
         </li>
         <li className="nav-item active">
-          <a className="nav-link" href="https://github.com/MaggieWalker" target="_blank" rel="noopener noreferrer">
+          <a
+            className="nav-link"
+            href="https://github.com/MaggieWalker"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
               height="30"
@@ -83,7 +88,12 @@ const Navbar = () => (
         </li>
 
         <li className="nav-item active">
-          <a className="nav-link" href="https://www.linkedin.com/in/magggiewalker/" target="_blank" rel="noopener noreferrer">
+          <a
+            className="nav-link"
+            href="https://www.linkedin.com/in/magggiewalker/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src="https://www.freeiconspng.com/uploads/linkedin-logo-3.png"
               height="30"

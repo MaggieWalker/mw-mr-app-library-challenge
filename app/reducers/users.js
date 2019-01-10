@@ -1,3 +1,5 @@
+//this reducer is currently unused, but would be used in the future to pull specific user information
+
 //action types
 const GOT_USER = 'GOT_USER';
 

@@ -12,7 +12,6 @@ class BookResults extends Component {
     };
     this.handleSelect = this.handleSelect.bind(this);
     this.bookSort = this.bookSort.bind(this);
-    // this.uniqueValues = this.uniqueValues.bind(this);
   }
 
   componentDidMount() {
