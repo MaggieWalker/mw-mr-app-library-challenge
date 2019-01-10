@@ -20,7 +20,7 @@ export const gotBook = book => ({
 //Thunk creator
 export const getBooks = (searchInput, parameter) => {
   return async dispatch => {
-      const res = await axios.get(`http://openlibrary.org/search.json?${parameter}=${searchInput}`);
+      const res = await axios.get(`https://openlibrary.org/search.json?${parameter}=${searchInput}`);
       console.log('res in index.js', res)
       const bookInfo = res.data;
       const currAction = gotBooks(bookInfo);

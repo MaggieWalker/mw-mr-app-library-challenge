@@ -14,7 +14,6 @@ class SearchNumber extends Component {
     this.textInputLCCN = React.createRef();
     this.textInputOLID = React.createRef();
     this.textInputq = React.createRef();
-    this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -41,11 +40,6 @@ class SearchNumber extends Component {
     }
   }
 
-  async handleClick(event) {
-    event.preventDefault();
-    const campusId = event.target.id;
-    await this.props.actions.removeSpecificCampus({ id: campusId });
-  }
   onSubmit(event) {
     if (
       event.target.name === 'ISBN' ||
