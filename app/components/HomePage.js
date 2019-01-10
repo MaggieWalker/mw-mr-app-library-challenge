@@ -136,7 +136,7 @@ class Homepage extends Component {
 
         <div id="book-list" className="album py-5 bg-light">
           <div className="container">
-            <div className="row">{books ? <BookResults /> : <div />}</div>
+            <div className="row">{books ? <BookResults /> : <div />} </div>
           </div>
         </div>
       </div>
