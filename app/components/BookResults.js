@@ -24,7 +24,7 @@ class BookResults extends Component {
     const books = [...this.state.unsortedBooks];
     if (category === 'AllBooks') return books;
     if (category === 'SortByAuthor') return books.sort(this.compareAuthor);
-    if (category === 'SortByTitle') return books.sort();
+    if (category === 'SortByTitle') return books.sort(this.compareTitle);
   }
   compareAuthor(a, b) {
     let nameA = a.author_name || 'a';
@@ -40,6 +40,19 @@ class BookResults extends Component {
     }
   }
 
+  compareTitle(a, b) {
+    let nameA = a.title_suggest || 'a';
+    let nameB = b.title_suggest || 'b';
+    let wordA = nameA[0].toUpperCase();
+    let wordB = nameB[0].toUpperCase();
+    if (wordA < wordB) {
+      return -1;
+    } else if (wordA > wordB) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
   handleSelect(event) {
     event.persist();
     const category = event.nativeEvent.target.value;
@@ -54,7 +67,7 @@ class BookResults extends Component {
     return (
       <div>
         <div className="form-group">
-          <label for="exampleFormControlSelect1">
+          <label htmlFor="exampleFormControlSelect1">
             {' '}
             <h3>Sort Books</h3>
           </label>
